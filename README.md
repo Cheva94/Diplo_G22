@@ -1,6 +1,14 @@
-Resolución de entregables de la Diplo 2023, realizada por el **Grupo 22**:
+# **Diplomatura en Ciencia de Datos, Aprendizaje Automático y sus Aplicaciones**
+
+## **Resolución de entregables**
+
+### **Grupo 22:**
 
 - [Chevallier-Boutell, Ignacio José](https://github.com/Cheva94)
 - Córdoba, Florencia ()
 - Ribetto, Federico ()
 - Rosa, Santiago ()
+
+### **Estructura:**
+
+**1. AyVD:** Análisis y Visualización de Datos
