@@ -1,6 +1,6 @@
 # **Diplomatura en Ciencia de Datos, Aprendizaje Automático y sus Aplicaciones**
 
-## **Resolución de entregables**
+## **Resolución de entregables de las materias obligatorias**
 
 ### **Grupo 22:**
 
