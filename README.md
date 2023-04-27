@@ -5,9 +5,9 @@
 ### **Grupo 22:**
 
 - [Chevallier-Boutell, Ignacio José](https://github.com/Cheva94)
-- Córdoba, Florencia ()
-- Ribetto, Federico ()
-- Rosa, Santiago ()
+- [Córdoba, Florencia](https://github.com/florcba)
+- [Ribetto, Federico](https://github.com/federibet)
+- [Rosa, Santiago](https://github.com/santrosa)
 
 ### **Estructura:**
 
