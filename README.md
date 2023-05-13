@@ -13,4 +13,5 @@
 
 ### **Estructura:**
 
-**1. AyVD:** Análisis y visualización de datos
+**1. AyVD:** Análisis y visualización de datos.
+**2. AEyCD:** Análisis exploratorio y curación de datos.
