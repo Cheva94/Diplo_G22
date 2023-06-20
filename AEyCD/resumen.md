@@ -1,4 +1,3 @@
-
 ## Resumen del entregable
 # Análisis Exploratorio y Curación de Datos
 
@@ -66,7 +65,7 @@ Se aplicaron las siguientes operaciones:
 
 2. Unimos las variables numéricas originales con las categóricas.
 
-3. Aplicamos el método de imputación iterativa (implementación de [Sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.impute.IterativeImputer.html)), usando el método KNN de [Sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html) como regresor, con `max_iter=50`, `tol=2e-1` y escaleo robusto, a las variables _YearBuilt_ y _BuildingArea_, que son las que más datos faltantes presentan.
+3. Aplicamos el método de imputación iterativa (implementación de [Sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.impute.IterativeImputer.html)), usando el método KNN de [Sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html) como regresor, con `max_iter=40`, `tol=1e-1` y escaleo robusto, a las variables _YearBuilt_ y _BuildingArea_, que son las que más datos faltantes presentan.
 
 4. Hicimos un análisis de componentes principales (implementación de [Sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)) utilizando los datos ya imputados de la plataforma Kaggle, usando las variables numéricas _Distance_, _Lattitude_, _Longtitude_, _YearBuilt_, _Landsize_, _BuildingArea_, _Rooms_, _Bedroom2_, _Bathroom_ y _Price_. Encontramos que las seis primeras componentes princimales explican una fracción del 0.9 de la varianza del dataset. Agreagamos entonces 6 columnas más a la tabla, correspondientes al valor de estas componentes principales en cada entrada.
 
