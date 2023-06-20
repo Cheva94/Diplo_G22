@@ -3,10 +3,12 @@
 # Análisis Exploratorio y Curación de Datos
 
 **Integrantes:**
-- Chevallier-Boutell, Ignacio José
-- Ribetto, Federico Daniel
-- Rosa, Santiago
-- Spano, Marcelo
+
+* Chevallier-Boutell, Ignacio José
+* Ribetto, Federico Daniel
+* Rosa, Santiago
+* Spano, Marcelo
+
 ==================================================
 
 # Parte 1: Filtrado de datos
@@ -62,6 +64,14 @@ El último filtro aplicado es a la variable _zipcode_: nos quedamos con los valo
 Se aplicaron las siguientes operaciones:
 1. One Hot encoding (implementación de [Sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)) a las variables _CouncilArea_, _Regionname_, _SellerG_ y _Type_, dado que no tienen un orden en sus categorías.
 
-2. unimos las variables numéricas originales con las categóricas.
+2. Unimos las variables numéricas originales con las categóricas.
 
 3. Aplicamos el método de imputación iterativa (implementación de [Sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.impute.IterativeImputer.html)), usando el método KNN de [Sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html) como regresor, con `max_iter=50`, `tol=2e-1` y escaleo robusto, a las variables _YearBuilt_ y _BuildingArea_, que son las que más datos faltantes presentan.
+
+4. Hicimos un análisis de componentes principales (implementación de [Sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)) utilizando los datos ya imputados de la plataforma Kaggle, usando las variables numéricas _Distance_, _Lattitude_, _Longtitude_, _YearBuilt_, _Landsize_, _BuildingArea_, _Rooms_, _Bedroom2_, _Bathroom_ y _Price_. Encontramos que las seis primeras componentes princimales explican una fracción del 0.9 de la varianza del dataset. Agreagamos entonces 6 columnas más a la tabla, correspondientes al valor de estas componentes principales en cada entrada.
+
+5. La composición final del dataset quedan concatenados de la siguiente forma:
+* encoding de las variables categóricas,
+* variables numéricas, con imputación en las variables _YearBuilt_ y _BuildingArea_,
+* seis componentes principales de las variables numéricas,
+* dataset de AirBnB para complementar datos del dataset Kaggle.
