@@ -25,7 +25,7 @@ Partimos de:
 
 --------------------------------------------------
 
-## Combimnación de los datasets con SQL:
+## Combinación de los datasets con SQL:
 Se utilizaron los promedios asociados al código postal (CP) del precio diario, semanal y mensual del dataset de AirBnB. La combinación se hace considerando los CP.
 
 --------------------------------------------------
