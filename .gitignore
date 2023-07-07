@@ -1,2 +1,3 @@
 # Ignora configuracion de VS Code
 .vscode
+*.ipynb_checkpoints
