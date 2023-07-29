@@ -19,3 +19,5 @@
 **2. AEyCD:** Análisis exploratorio y curación de datos.
 
 **3. IAA:** Introducción al aprendizaje automático.
+
+**4. AS:** Aprendizaje supervisado.
