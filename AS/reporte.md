@@ -52,7 +52,7 @@ Finalmente, el `índice de masa corporal`va desde 10 hasta 96, aunque el 75% de 
 
 ### Variable objetivo
 
-    Las clases están super desbalanceadas: más del 80% corresponden a personas no diabéticas.
+Las clases están super desbalanceadas: más del 80% corresponden a personas no diabéticas.
 
 ## Preprocesamiento
 
