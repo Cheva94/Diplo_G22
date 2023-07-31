@@ -56,7 +56,11 @@ Finalmente, el `índice de masa corporal`va desde 10 hasta 96, aunque el 75% de 
 
 ## Preprocesamiento
 
-pipeline y qué hicimos
+Armamos un pipeline de preprocesamiento, el cual se encarga de:
+* Mapeamos las variables categíricas a numéricas utilizando one-hot encoding.
+* Normalizamos las variables categóricas.
+
+Lo guardamos en un archivo pkl para utilizarlo al inicio de los modelos.
 
 ## XGBoost
 
