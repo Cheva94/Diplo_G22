@@ -36,11 +36,17 @@ La variable del `sexo` tiene 3 opciones posibles: varón, mujer y otro. La varia
 
 Respecto a `sexo` hay casi un 60% de mujeres y un 40% de varones, por lo que no hay un gran desbalance entre estas dos categorías. Sí está extremadamente desbalanceado con otros: hay mucho menos que el 1%.
 
+![](sexo.png)
+
 Respecto a `historial de fumador` las dos categorías más preponderantes con un 35% cada una son nunca y sin información, llevándose prácticamente el 70% de los datos. Las otras cuatro categorías ocupan el 30% restante de una manera más o menos equitativa.
+
+![](fumador.png)
 
 ### Variables numéricas
 
 En ningún caso se observan outliers significativos, por lo que se decide no realizar ninguna eliminación ni imputación.
+
+![](boxplot.png)
 
 Las variables `hipertensión` y `enfermedad cardíaca` son en realidad respuestas binarias: 0 es que no tiene y 1 es que sí. En ambas variables hay desbalance: la enorme mayoría tiene valor 0.
 
@@ -50,15 +56,21 @@ Tanto la `hemoglobina glicosilada` como la `glucemia` presentan unos pocos valor
 
 Finalmente, el `índice de masa corporal`va desde 10 hasta 96, aunque el 75% de los valores se encuentra por debajo de los 30, ubicándose entre valores normales y sobrepeso.
 
+![](histogramas.png)
+
 ### Variable objetivo
 
 Las clases están super desbalanceadas: más del 80% corresponden a personas no diabéticas.
+
+![](diabetes.png)
 
 ## Preprocesamiento
 
 Armamos un pipeline de preprocesamiento, el cual se encarga de:
 * Mapeamos las variables categíricas a numéricas utilizando one-hot encoding.
 * Normalizamos las variables categóricas.
+
+![](pipeline.png)
 
 Lo guardamos en un archivo pkl para utilizarlo al inicio de los modelos.
 
@@ -72,11 +84,9 @@ Santi. Comentar un poco sobre el clasificador, que se hace, resultados, etc
 
 ## Máquinas de vectores de soporte
 
-Cheva. Comentar un poco sobre el clasificador, que se hace, resultados, etc
+Las **máquinas de vectores de soporte (support-vector machines, SVM)** son clasificadores binarios y, en principio, lineales, las cuales, a diferencia del perceptrón, sí contemplan la optimización de la frontera de decisión que permite separar las dos clases: se busca aquel hiperplano que esté lo más separado posible de los puntos más cercanos al mismo. Dichos puntos son conocidos como **vectores de soporte**, mientras que el espacio entre ellos y el hiperplano se conoce como **margen**. Con esto presente, podemos decir que el algoritmo SVM encuentra el hiperplano que devuelve el mayor margen entre sí mismo y los vectores de soporte. Por esta razón es que este tipo de clasificador a veces es conocido como **clasificador por márgenes (margin classifier)**.
 
-## Bosque aleatorio
 
-Fede. Comentar un poco sobre el clasificador, que se hace, resultados, etc
 
 ## Conclusiones
 
