@@ -84,9 +84,21 @@ Santi. Comentar un poco sobre el clasificador, que se hace, resultados, etc
 
 ## Máquinas de vectores de soporte
 
-Las **máquinas de vectores de soporte (support-vector machines, SVM)** son clasificadores binarios y, en principio, lineales, las cuales, a diferencia del perceptrón, sí contemplan la optimización de la frontera de decisión que permite separar las dos clases: se busca aquel hiperplano que esté lo más separado posible de los puntos más cercanos al mismo. Dichos puntos son conocidos como **vectores de soporte**, mientras que el espacio entre ellos y el hiperplano se conoce como **margen**. Con esto presente, podemos decir que el algoritmo SVM encuentra el hiperplano que devuelve el mayor margen entre sí mismo y los vectores de soporte. Por esta razón es que este tipo de clasificador a veces es conocido como **clasificador por márgenes (margin classifier)**.
+Las **máquinas de vectores de soporte (support-vector machines, SVM)** son clasificadores binarios y, en principio, lineales, las cuales, a diferencia del perceptrón, sí contemplan la optimización de la frontera de decisión que permite separar las dos clases: se busca aquel hiperplano que esté lo más separado posible de los puntos más cercanos al mismo. Dichos puntos son conocidos como **vectores de soporte**, mientras que el espacio entre ellos y el hiperplano se conoce como **margen**. Con esto presente, podemos decir que el algoritmo SVM encuentra el hiperplano que devuelve el mayor margen entre sí mismo y los vectores de soporte. Por esta razón es que este tipo de clasificador a veces es conocido como **clasificador por márgenes (margin classifier)**. Se dice que en principio es un clasificador lineal ya que es excelente para claificar conjuntos que son linealmente separables. Sin embargo, cuando las clases no son estrictamente linealmente separables, pero presentan un solapamiento moderado, se define una **tolerancia (C)** al error: permitimos que haya datos que caigan dentro del margen de error o incluso que estén del lado incorrecto del hiperplano. Existen problemas de clasificación complejos imposibles de resolver usando funciones lineales, incluso tomando una tolerancia. En estos casos, se puede generalizar SVM para que considere funciones no lineales sobre el espacio de parámetros original. Esto se logra al recurrir al **Kernel trick**: mapear los datos sobre un espacio de mayores dimensiones donde se espera, con alta probabilidad, que las clases sí sean linealmente separables. 
 
+Teniendo todo esto en cuenta, se hizo un barrido de hiperparámetros, variando: `C` (tolerancia), `Kernel` (Kernel a utilizar en el mapeo), `class_weight` (si considera o no un balanceo entre las clases presentes) y `degree` (grado del polinomio, en caso de un Kernel polinómico). La combinación óptima resultó ser: 
+* `C` = 1E3
+* `Kernel` = 'poly'
+* `class_weight` = None (default)
+* `degree` = 3 (default)
 
+Con estos hiperparámetros, se los valores de accuracy y la matriz de confusión obtenidos son:
+* Entrenamiento: 96.916%
+* Validación: 97.032%
+
+![](confusion_svm.png)
+
+Al submitir las predicciones de este modelo en la competencia Kaggle, se obtuvo un score de 97.133%, estando 0.133% por debajo del baseline.
 
 ## Conclusiones
 
