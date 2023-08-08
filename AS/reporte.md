@@ -16,7 +16,7 @@
 
 ## Introducción
 
-En este entregable se pretende participar de una competencia de Kaggle, donde dataset es una recopilación de datos méedicos y demográficos de pacientes junto a su estado de diabetes.
+En este entregable se pretende participar de una competencia de Kaggle, donde dataset es una recopilación de datos médicos y demográficos de pacientes junto a su estado de diabetes.
 
 El dataset consta de un total de 100000 registros: 95000 se utilizan en la etapa de entrenamiento, mientras que los otros 5000 son para la evaluación del modelo. Cada registro tiene 10 variables: además del ID del paciente y su estado de diabetes, hay 2 variables categóricas (sexo e historial de fumador) y 6 variables numéricas (edad, hipertensión, enfermedades cardíacas, índice de masa corporal, hemoglobina glicosilada y glucemia).
 
@@ -32,17 +32,17 @@ Salvo las etiquetas que fueron eliminadas a propósito en el conjunto de datos d
 
 Se puede observar que cada variable categórica posee pocas categorías. Además se observa que son variables nominales.
 
-La variable del `sexo` tiene 3 opciones posibles: varón, mujer y otro. La variable `historial de fumador` tiene 6 opciones posibles: sin información, nunca, fumaba, fuma actualmente, no fuma actualmente y siempre.
+La variable `sexo` tiene 3 opciones posibles: 'varón', 'mujer' y 'otro'. La variable `historial de fumador` tiene 6 opciones posibles: 'sin información', 'nunca', 'fumaba', 'fuma actualmente', 'no fuma actualmente' y 'siempre'.
 
-Respecto a `sexo` hay casi un 60% de mujeres y un 40% de varones, por lo que no hay un gran desbalance entre estas dos categorías. Sí está extremadamente desbalanceado con otros: hay mucho menos que el 1%.
+Respecto a `sexo` hay casi un 60% de mujeres y un 40% de varones, por lo que no hay un gran desbalance entre estas dos categorías. Sí está extremadamente desbalanceado en 'otros': hay mucho menos del 1%.
 
-Respecto a `historial de fumador` las dos categorías más preponderantes con un 35% cada una son nunca y sin información, llevándose prácticamente el 70% de los datos. Las otras cuatro categorías ocupan el 30% restante de una manera más o menos equitativa.
+Respecto a `historial de fumador` las dos categorías más preponderantes con un 35% cada una son 'nunca' y 'sin información', llevándose prácticamente el 70% de los datos. Las otras cuatro categorías ocupan el 30% restante de una manera más o menos equitativa.
 
 ### Variables numéricas
 
 En ningún caso se observan outliers significativos, por lo que se decide no realizar ninguna eliminación ni imputación.
 
-Las variables `hipertensión` y `enfermedad cardíaca` son en realidad respuestas binarias: 0 es que no tiene y 1 es que sí. En ambas variables hay desbalance: la enorme mayoría tiene valor 0.
+Las variables `hipertensión` y `enfermedad cardíaca` son binarias: 0 es que no tiene y 1 es que sí. En ambas variables hay desbalance: la enorme mayoría tiene valor 0.
 
 La `edad` ocupa desde 0 a 80 años, habiendo un pico distintivo en torno a los 80, pero el resto de las edades están bastante distribuidas.
 
@@ -52,13 +52,13 @@ Finalmente, el `índice de masa corporal`va desde 10 hasta 96, aunque el 75% de 
 
 ### Variable objetivo
 
-Las clases están super desbalanceadas: más del 80% corresponden a personas no diabéticas.
+Las clases están súper desbalanceadas: más del 80% corresponden a personas no diabéticas.
 
 ## Preprocesamiento
 
 Armamos un pipeline de preprocesamiento, el cual se encarga de:
-* Mapeamos las variables categíricas a numéricas utilizando one-hot encoding.
-* Normalizamos las variables categóricas.
+* Mapear las variables categóricas a numéricas utilizando one-hot encoding.
+* Normalizar las variables categóricas.
 
 Lo guardamos en un archivo pkl para utilizarlo al inicio de los modelos.
 
@@ -69,7 +69,7 @@ Marce. Comentar un poco sobre el clasificador, que se hace, resultados, etc
 ## Redes neuronales
 
 Santi. Comentar un poco sobre el clasificador, que se hace, resultados, etc
-
+Oblígame.
 ## Máquinas de vectores de soporte
 
 Cheva. Comentar un poco sobre el clasificador, que se hace, resultados, etc
@@ -77,7 +77,7 @@ Cheva. Comentar un poco sobre el clasificador, que se hace, resultados, etc
 ## Bosque aleatorio
 
 Fede. Comentar un poco sobre el clasificador, que se hace, resultados, etc
-
+Fede casi muere al recibirse. To be implemented.
 ## Conclusiones
 
 cierre del entregable
