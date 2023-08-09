@@ -49,7 +49,7 @@ class LinearNN3(nn.Module):
 
 class LinearNN2(nn.Module):
 
-    def __init__(self,dims):
+    def __init__(self,dims,p_drop):
         super().__init__()
         self.linear1 = nn.Linear(in_features = dims[0], out_features = dims[1], bias = True)
         self.linear2 = nn.Linear(in_features = dims[1], out_features = dims[2], bias = True)
@@ -77,8 +77,6 @@ class LinearNN2(nn.Module):
         x = self.softmax(x)
         x = self.dropout(x)
 
-        self.dropout = nn.Dropout(p=p_drop)
-
         return x
 
 
@@ -91,7 +89,7 @@ class LinearNN2(nn.Module):
 
 class LinearNN1(nn.Module):
 
-    def __init__(self,dims):
+    def __init__(self,dims,p_drop):
         super().__init__()
         self.linear1 = nn.Linear(in_features = dims[0], out_features = dims[1], bias = True)
         self.linear2 = nn.Linear(in_features = dims[1], out_features = dims[2], bias = True)

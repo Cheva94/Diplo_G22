@@ -64,14 +64,14 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 n_layers = 3    #numero de capas ocultas del modelo
 
-dropout = 0.4   #probabilidad de desactivar neuronas en el entrenamiento
+dropout = 0.5   #probabilidad de desactivar neuronas en el entrenamiento
 
 #inicializo el modelo
 if n_layers == 3:
-    nlayers = [13,100,100,100,2]
+    nlayers = [13,104,208,52,2]
     model = net.LinearNN3(nlayers,dropout)
 elif n_layers == 2:
-    nlayers = [13,1000,1000,2]
+    nlayers = [13,130,20,2]
     model = net.LinearNN2(nlayers,dropout)
 elif n_layers == 1:
     nlayers = [13,1000,2]
@@ -84,7 +84,7 @@ model.to(device) #Cargamos en memoria
 #----------------------------------------------------------------------------------------------------------------------------------
 #Hiperparametros
 batch_size= len(y_test)
-max_epochs = 25
+max_epochs = 300
 learning_rate = 5e-4
 
 #cargo los datos
@@ -95,9 +95,9 @@ val_data = {'x':x_val_transformed, 'y':y_val}
 ratio_1_0_train = len([i for i in y_train if i==1])/len(y_train)
 ratio_1_0_test = len([i for i in y_test if i==1])/len(y_test)
 
-train_subset = prep.set_up_data(train_data, scaling='norm')
-test_subset = prep.set_up_data(test_data, scaling='norm')
-val_subset = prep.set_up_data(val_data, scaling='norm')
+train_subset = prep.set_up_data(train_data, scaling='01')
+test_subset = prep.set_up_data(test_data, scaling='01')
+val_subset = prep.set_up_data(val_data, scaling='01')
 
 dataloader_train = DataLoader(train_subset, batch_size = batch_size, shuffle=False)
 dataloader_test  = DataLoader(test_subset , batch_size=len(y_test), shuffle=False)
@@ -127,6 +127,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 #Listas donde guardamos loss de entrenamiento, y para el de validación la loss y las métricas de evaluación.
 RMSE, BIAS, Corr_P, Corr_S = [], [], [], []
 loss_train = []
+loss_val = []
 
 for epoch in range(max_epochs):
     #print('Epoca: '+ str(epoch+1) + ' de ' + str(max_epochs) )
@@ -159,24 +160,29 @@ for epoch in range(max_epochs):
 
     model.eval()   #Esto le dice al modelo que lo usaremos para evaluarlo (no para entrenamiento)
 
-    #Calculamos la función de costo para la muestra de testing.
-    input_test, target_test = next(iter(dataloader_test))
-    input_test, target_test = input_test.to(device) , target_test.to(device)
+    #Calculamos la función de costo para la muestra de validación.
+    input_val, target_val = next(iter(dataloader_val))
+    input_val, target_val = input_val.to(device) , target_val.to(device)
 
     with torch.no_grad():
-        output_test = model(input_test).squeeze()
+        output_val = model(input_val).squeeze()
 
-    #Calculo de la loss de la epoca
+    #Calculo de la loss de validacion
+    loss = Loss(output_val.float(), target_val.float()).cpu()
+    loss_val.append(loss.numpy())
+
     print('Loss Train: ', str(loss_train[epoch]))
-    #print('Loss Val:   ', str(loss_val[epoch]))
-
+    print('Loss Val:   ', str(loss_val[epoch]))
+    print('-'*50)
     ###################################
 
     #Calculo de metricas RMSE, BIAS, Correlacion de Pearson y Spearman
-    Corr_P.append(corr_P(output_test.cpu(), target_test.cpu()))
-    Corr_S.append(corr_S(output_test.cpu(), target_test.cpu()))
+    Corr_P.append(corr_P(output_val.cpu(), target_val.cpu()))
+    Corr_S.append(corr_S(output_val.cpu(), target_val.cpu()))
 
-plt.plot(loss_train)
+plt.plot(loss_train, label='train')
+plt.plot(loss_val, label='val')
+plt.legend()
 plt.savefig('tmp/loss.png',dpi=300)
 
 #----------------------------------------------------------------------------------------------------------------------------------
@@ -192,7 +198,7 @@ with torch.no_grad():
 
 #transformo outputs probabilisticos a etiquetas. La mayor probabilidad tiene un 1, el resto cero
 output_test = np.array(output_test.cpu())
-print(output_test)
+
 target_test = target_test.cpu()
 output_test0 = np.zeros(output_test.shape)
 for i in range(output_test.shape[0]):

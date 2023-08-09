@@ -17,7 +17,7 @@ class set_up_data(Dataset):
 
         self.x_data = self.scaling_mtd( self.x_data, self.xmin, self.xmax)
         self.y_data = self.class_data(self.y_data)
-        
+
 
     def __getitem__(self,index):
         x = torch.tensor(self.x_data[:,index], dtype=torch.float)
@@ -33,6 +33,11 @@ class set_up_data(Dataset):
         return (data-datamin[:,np.newaxis])/(datamax[:,np.newaxis]-datamin[:,np.newaxis])
 
     def ScaleTo01(self, data, datamin, datamax):
+        i=0
+        for item in datamax:
+            if item == 0.:
+                datamax[i]=1.
+            i+=1
         return data/datamax[:,np.newaxis]
 
 
