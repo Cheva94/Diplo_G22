@@ -16,7 +16,7 @@
 
 ## Introducción
 
-En este entregable se pretende participar de una competencia de Kaggle, donde dataset es una recopilación de datos méedicos y demográficos de pacientes junto a su estado de diabetes.
+En este entregable se pretende participar de una competencia de Kaggle, donde el dataset es una recopilación de datos méedicos y demográficos de pacientes junto a su estado de diabetes.
 
 El dataset consta de un total de 100000 registros: 95000 se utilizan en la etapa de entrenamiento, mientras que los otros 5000 son para la evaluación del modelo. Cada registro tiene 10 variables: además del ID del paciente y su estado de diabetes, hay 2 variables categóricas (sexo e historial de fumador) y 6 variables numéricas (edad, hipertensión, enfermedades cardíacas, índice de masa corporal, hemoglobina glicosilada y glucemia).
 
