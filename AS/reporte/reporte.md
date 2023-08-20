@@ -16,7 +16,7 @@
 
 ## Introducción
 
-En este entregable se pretende participar de una competencia de Kaggle, donde el dataset es una recopilación de datos méedicos y demográficos de pacientes junto a su estado de diabetes.
+En este entregable se pretende participar de una competencia de Kaggle, donde el dataset es una recopilación de datos médicos y demográficos de pacientes junto a su estado de diabetes.
 
 El dataset consta de un total de 100000 registros: 95000 se utilizan en la etapa de entrenamiento, mientras que los otros 5000 son para la evaluación del modelo. Cada registro tiene 10 variables: además del ID del paciente y su estado de diabetes, hay 2 variables categóricas (sexo e historial de fumador) y 6 variables numéricas (edad, hipertensión, enfermedades cardíacas, índice de masa corporal, hemoglobina glicosilada y glucemia).
 
@@ -67,8 +67,8 @@ Las clases están super desbalanceadas: más del 80% corresponden a personas no 
 ## Preprocesamiento
 
 Armamos un pipeline de preprocesamiento, el cual se encarga de:
-* Mapeamos las variables categíricas a numéricas utilizando one-hot encoding.
-* Normalizamos las variables categóricas.
+* Mapear las variables categóricas a numéricas utilizando one-hot encoding.
+* Normalizar las variables categóricas.
 
 ![](pipeline.png)
 
@@ -91,8 +91,9 @@ Al dataset lo dividimos en: 80% entrenamiento, 10% validación y 10% testing. Ac
 
 A la red se la entrenó durante 300 épocas con una taza de aprendizaje de 0.0005 usando el optimizador ADAM, y la entropía cruzada como función de costo, la cual es óptima para problemas de clasificación binaria. En cada paso de entrenamiento se aplicó un dropout de 0.5. Todas las capas tienen bias.
 
-![](loss.png =600x400)
-![](confusion_nn.png =600x400)
+![](loss.png)
+
+![](confusion_nn.png)
 
 La máxima precisión alcanzada fue de 97,30% (score privado) con esta configuración. Utilizamos todos estos hiperparámetros y configuración de la red con el viejo y confiable método de prueba y error, dado que son demasiados parámetros al mismo tiempo para hacer un gridsearch. Por ejemplo, descubrimos que si usamos múltiplos de 13 en el número de neuronas de las capas ocultas, obteníamos una mejora de la clasificación. Probamos redes de una y dos capas pero estas nunca superaron el 96% de efectividad. También intentamos asignarle pesos al optimizador para que pondere los casos de diabetes tipo 1, que es la minoría, pero la red se sesgaba mucho y no obteníamos una precisión aceptable (menos de 90%).
 
