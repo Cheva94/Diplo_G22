@@ -74,10 +74,6 @@ Armamos un pipeline de preprocesamiento, el cual se encarga de:
 
 Lo guardamos en un archivo pkl para utilizarlo al inicio de los modelos.
 
-## XGBoost
-
-Marce. Comentar un poco sobre el clasificador, que se hace, resultados, etc
-
 ## Redes neuronales
 
 Santi. Comentar un poco sobre el clasificador, que se hace, resultados, etc
@@ -92,13 +88,54 @@ Teniendo todo esto en cuenta, se hizo un barrido de hiperparámetros, variando: 
 * `class_weight` = None (default)
 * `degree` = 3 (default)
 
-Con estos hiperparámetros, se los valores de accuracy y la matriz de confusión obtenidos son:
+Con estos hiperparámetros, los valores de accuracy y la matriz de confusión obtenidos son:
 * Entrenamiento: 96.916%
 * Validación: 97.032%
 
 ![](confusion_svm.png)
 
 Al submitir las predicciones de este modelo en la competencia Kaggle, se obtuvo un score de 97.133%, estando 0.133% por debajo del baseline.
+
+## XGBoost
+
+**XGBoost (eXtreme Gradient Boosting)** es una librería/algoritmo de aprendizaje automático que pertenece a la categoría de boosting, ya que combina múltiples árboles débiles para crear un modelo fuerte y preciso. Se puede utilizar tanto en problemas de clasificación como de regresión.
+
+En lugar de ajustar un hiperplano para separar las clases, como lo hace SVM, XGBoost crea una combinación ponderada de varios árboles de decisión. Cada árbol se construye de manera secuencial para mejorar el rendimiento del modelo general. Los árboles posteriores se centran en corregir los errores cometidos por los árboles anteriores, lo que permite al modelo aprender patrones más complejos y capturar relaciones no lineales entre las características y las etiquetas.
+
+Una de las grandes ventajas de este algoritmo es la alta velocidad computacional ya que se encuentra optimizado para procesamiento en paralelo. Además, puede manejar grandes conjuntos de datos. 
+
+Se realizó un barrido de los siguientes hiperparámetros:
+* `subsample`: Es la proporción de muestras del conjunto de entrenamiento que se utiliza para entrenar cada árbol de decisión individual en el proceso de boosting.
+* `scale_pos_weight`: Controla el balance de pesos positivos y negativos.
+* `reg_lambda`: Regularización L2 aplicada a los pesos de los modelos de árboles de decisión durante el proceso de entrenamiento. Es utilizado para prevenir el sobreajuste.
+* `reg_alpha`: Regularización L1 aplicada a los pesos de los modelos de árboles de decisión durante el proceso de entrenamiento. Es utilizado para prevenir el sobreajuste.
+* `n_estimators`: Número de árboles de decisión que se construirán en el proceso de entrenamiento.
+* `min_child_weight`: Peso mínimo que se permite en cada nodo hoja de los árboles de decisión durante el proceso de construcción.
+* `max_depth`: Máxima profundidad de los árboles.
+* `learning_rate`: Tasa de aprendizaje con la que el algoritmo ajusta los pesos de los modelos de árboles durante el proceso de entrenamiento.
+* `gamma`: Umbral que controla cuándo se crean nuevas hojas (nodos terminales) en los árboles de decisión durante el proceso de construcción.
+* `colsample_bytree`: Proporción de características (columnas) del conjunto de entrenamiento que se utilizarán al construir cada árbol de decisión durante el proceso de entrenamiento.
+
+La combinación óptima resultó ser:
+
+* `subsample`: 1.0
+* `scale_pos_weight`: 1
+* `reg_lambda`: 1.0
+* `reg_alpha`: 0.5
+* `n_estimators`: 200
+* `min_child_weight`: 1
+* `max_depth`: 4
+* `learning_rate`: 0.1
+* `gamma`: 0
+* `colsample_bytree`: 1.0
+
+Con estos hiperparámetros, los valores de accuracy y la matriz de confusión obtenidos son:
+* Entrenamiento: 97.23%
+* Validación: 97.37%
+
+![](confusion_xgboost.png)
+
+Al submitir las predicciones de este modelo en la competencia Kaggle, se obtuvo un score público de 97.2%, estando 0.066% por debajo del baseline. Además, se obtuvo un score privado de 97.371%.
 
 ## Conclusiones
 
