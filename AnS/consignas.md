@@ -8,7 +8,7 @@ Con la nueva base, realizar el siguiente análisis. Notar que es más completo p
 
 2- Evaluación visual e intuitiva de a dos variables numéricas por vez. Sugerencia: hagan los scatterplots de las combinaciones de dos variables que tengan algún sentido para ustedes, porque todas las combinaciones de variables son muchas y no van a poder analizarlas como merecen.
 
-3- Pregunta: ¿Se realizó alguna normalización o escalado de la base? ¿Por qué ?
+3- Pregunta: ¿Se realizó alguna normalización o escalado de la base? ¿Por qué?
 
 4- Aplicación de clustering para encontrar grupos de jugadoras con habilidades equivalentes, por ejemplo, jugadoras que podrían intercambiarse en el caso de una lesión o cuando una jugadora está cansada. Para esto utilice como mínimo dos técnicas de clustering: por ejemplo k-medias, DBSCAN, mezcla de Gaussianas y/o alguna jerárquica. Justifiquen por qué eligen los diferentes hiper-parámetros que se puedan elegir según el método: número de clusters, medida de distancia, criterio de aglomeración… 
 
