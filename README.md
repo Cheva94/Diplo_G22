@@ -14,12 +14,12 @@
 
 ### **Estructura:**
 
-**1. AyVD:** Análisis y visualización de datos.
+**1. AyVD:** Análisis y visualización de datos. Dataset: encuesta Sysarmy.
 
-**2. AEyCD:** Análisis exploratorio y curación de datos.
+**2. AEyCD:** Análisis exploratorio y curación de datos. Dataset: ventas de propiedades en Melbourne, Australia.
 
-**3. IAA:** Introducción al aprendizaje automático.
+**3. IAA:** Introducción al aprendizaje automático. Datasets: ventas de propiedades en California y otorgamiento de líneas de créditos hipotecarios.
 
-**4. AS:** Aprendizaje supervisado.
+**4. AS:** Aprendizaje supervisado. Dataset: predicción de diabetes en pacientes.
 
-**5. AnS:** Aprendizaje no supervisado.
+**5. AnS:** Aprendizaje no supervisado. Dateset: jugadoras del FIFA 2023.
