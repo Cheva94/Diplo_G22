@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
 def plots(x,y,x_label,y_label,cluster_labels,n_clusters,sample_silhouette_values,silhouette_avg,fig_name):
 
     fig, [ax1, ax2] = plt.subplots(1,2)
